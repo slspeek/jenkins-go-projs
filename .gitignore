@@ -1,0 +1,17 @@
+.viminfo
+plugins/
+org.jenkinsci.plugins.gitclient.JGitTool.xml
+.fontconfig/
+*.log
+.owner
+.ssh
+userContent/
+jobs/
+secrets
+updates
+*.key
+hudson.*.xml
+jenkins.*.xml
+secret.key.not-so-secret
+nodeMonitors.xml
+queue.xml.bak
