@@ -39,7 +39,9 @@
           <default>
             <comparator class="hudson.util.CaseInsensitiveComparator"/>
           </default>
-          <int>2</int>
+          <int>3</int>
+          <string>DISPLAY</string>
+          <string>:0</string>
           <string>GOROOT</string>
           <string>$HOME/userContent/go</string>
           <string>PATH</string>
