@@ -112,6 +112,15 @@ gocov test github.com/slspeek/goblob | gocov-xml &gt; coverage.xml
       <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
     </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>flowgo</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
   </publishers>
   <buildWrappers/>
 </project>
