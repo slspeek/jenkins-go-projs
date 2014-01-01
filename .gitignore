@@ -50,3 +50,8 @@ Bureaublad/
 .npm/
 .nv/
 .pki/
+.xsession-errors.old
+.xinitrc
+mbox
+Downloads/
+.mozilla/
