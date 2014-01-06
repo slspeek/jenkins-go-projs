@@ -1,4 +1,4 @@
-apt-get install bzr git mongodb-server
+apt-get install bzr git mongodb-server build-essential screen
 adduser -M jenkins #to get a uid>1000, so we can graphically login and run 
 wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 echo deb http://pkg.jenkins-ci.org/debian binary/>>/etc/apt/sources.list
