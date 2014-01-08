@@ -38,12 +38,17 @@
 export GOPATH=$(pwd);
 outfile=gotest.out;
 go get -v github.com/slspeek/gotube/main;
+go get -v github.com/slspeek/gotube/client/gtput;
 
 go test -v github.com/slspeek/gotube/auth|tee $outfile;
 go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/auth 
 go2xunit -fail -input $outfile -output auth-tests.xml
 gocov test github.com/slspeek/gotube/auth | gocov-xml &gt; auth-coverage.xml
 
+go test -v github.com/slspeek/gotube/client/gtput |tee $outfile;
+go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/client/gtput
+go2xunit -fail -input $outfile -output gtput-tests.xml
+gocov test github.com/slspeek/gotube/client/gtput | gocov-xml &gt; gtput-coverage.xml
 
 go test -v github.com/slspeek/gotube/mongo|tee $outfile;
 go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/mongo 
@@ -60,6 +65,11 @@ gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; rest-coverage.xml
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>bin/*</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+    </hudson.tasks.ArtifactArchiver>
     <hudson.plugins.cobertura.CoberturaPublisher plugin="cobertura@1.9.3">
       <coberturaReportFile>*-coverage.xml</coberturaReportFile>
       <onlyStable>false</onlyStable>
