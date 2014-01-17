@@ -61,7 +61,11 @@ go test -v github.com/slspeek/gotube/rest|tee $outfile;
 go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/rest 
 go2xunit -fail -input $outfile -output rest-tests.xml
 gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; rest-coverage.xml
-</command>
+
+go test -v github.com/slspeek/gotube/thumb|tee $outfile;
+go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/thumb 
+go2xunit -fail -input $outfile -output thumb-tests.xml
+gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; thumb-coverage.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
