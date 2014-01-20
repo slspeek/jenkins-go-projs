@@ -40,6 +40,8 @@ outfile=gotest.out;
 go get -v github.com/slspeek/gotube/main;
 go get -v github.com/slspeek/gotube/client/gtput;
 
+(cd src/github.com/slspeek/gotube &amp;&amp; ./fetch-small-test-data.sh)
+
 go test -v github.com/slspeek/gotube/auth|tee $outfile;
 go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/auth 
 go2xunit -fail -input $outfile -output auth-tests.xml
@@ -65,7 +67,7 @@ gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; rest-coverage.xml
 go test -v github.com/slspeek/gotube/thumb|tee $outfile;
 go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/thumb 
 go2xunit -fail -input $outfile -output thumb-tests.xml
-gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; thumb-coverage.xml</command>
+gocov test github.com/slspeek/gotube/thumb | gocov-xml &gt; thumb-coverage.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
