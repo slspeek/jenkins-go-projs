@@ -45,7 +45,7 @@ grunt --no-color
 cd ..
 mongo e2etest --eval &apos;db.dropDatabase();&apos;
 ./fetch-test-data.sh
-screen -d -m bin/main -pw test_htpasswd -no-ssl -db e2etest web/app
+screen -d -m bin/main -pw test_htpasswd -no-ssl -db e2etest -www web/app
 cd web
 
 protractor protConf.js

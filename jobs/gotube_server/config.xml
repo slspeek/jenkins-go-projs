@@ -36,38 +36,21 @@
       <command>rm -rf src/github.com/slspeek pkg *.go
 
 export GOPATH=$(pwd);
-outfile=gotest.out;
 go get -v github.com/slspeek/gotube/main;
 go get -v github.com/slspeek/gotube/client/gtput;
 
 (cd src/github.com/slspeek/gotube &amp;&amp; ./fetch-small-test-data.sh)
 
-go test -v github.com/slspeek/gotube/auth|tee $outfile;
-go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/auth 
-go2xunit -fail -input $outfile -output auth-tests.xml
-gocov test github.com/slspeek/gotube/auth | gocov-xml &gt; auth-coverage.xml
+./ci-testcover.sh gotube/auth
 
-go test -v github.com/slspeek/gotube/client/gtput |tee $outfile;
-go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/client/gtput
-go2xunit -fail -input $outfile -output gtput-tests.xml
-gocov test github.com/slspeek/gotube/client/gtput | gocov-xml &gt; gtput-coverage.xml
+./ci-testcover.sh gotube/client/gtput
 
-go test -v github.com/slspeek/gotube/mongo|tee $outfile;
-go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/mongo 
-go2xunit -fail -input $outfile -output mongo-tests.xml
-gocov test github.com/slspeek/gotube/mongo | gocov-xml &gt; mongo-coverage.xml
+./ci-testcover.sh gotube/mongo
 
+./ci-testcover.sh gotube/rest
 
-
-go test -v github.com/slspeek/gotube/rest|tee $outfile;
-go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/rest 
-go2xunit -fail -input $outfile -output rest-tests.xml
-gocov test github.com/slspeek/gotube/rest | gocov-xml &gt; rest-coverage.xml
-
-go test -v github.com/slspeek/gotube/thumb|tee $outfile;
-go test -v -bench=&quot;.*&quot; -benchmem github.com/slspeek/gotube/thumb 
-go2xunit -fail -input $outfile -output thumb-tests.xml
-gocov test github.com/slspeek/gotube/thumb | gocov-xml &gt; thumb-coverage.xml</command>
+./ci-testcover.sh gotube/thumb
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
